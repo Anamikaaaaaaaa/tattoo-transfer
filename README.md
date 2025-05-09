@@ -29,7 +29,7 @@ Features:
 - 🔍Tattoo Style Transfer – ML + Art + Web  
 
 
-- 📧 Email: 
-- 💼 LinkedIn: 
+- 📧 Email: anamikaasarkar18@gmail.com
+- 💼 LinkedIn: www.linkedin.com/in/anamika-sarkar-16a103365
 
-
+If you need report on this project then contact me.
