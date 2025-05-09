@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tattoo Style Transfer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tattoo Style Transfer</h1>
+        <p>Upload an image to transform it into tattoo-style artwork using GANs.</p>
+        
+        <form id="upload-form">
+            <input type="file" name="file" id="file" accept="image/*" required>
+            <button type="submit">Upload and Style</button>
+        </form>
+
+        <div id="result">
+            <h2>Styled Image:</h2>
+            <img id="styled-image" src="" alt="Styled Image">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("upload-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById("file");
+            formData.append("file", fileInput.files[0]);
+
+            const response = await fetch("/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                document.getElementById("styled-image").src = data.image_url;
+            } else {
+                alert("Error: " + data.error);
+            }
+        });
+    </script>
+</body>
+</html>
